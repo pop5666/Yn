@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<meta name="theme-color" content="#06243a">
+<title>DEEP FIN — Eat • Grow • Dive</title>
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon-192.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="hud" class="hide">
+  <div class="l">
+    <div class="chip"><b id="shn"></b><span id="shl"></span></div>
+    <div class="bar xp"><i id="xpF"></i></div>
+    <div class="bar hp"><i id="hpF"></i><b id="hpT"></b></div>
+    <div id="fx"></div>
+  </div>
+  <div class="r">
+    <div class="row"><span class="pill">🪙 <b id="cn">0</b></span><span class="pill">⭐ <b id="sc">0</b></span><button id="pause" class="ic" data-go="pause">⏸</button></div>
+    <div class="row small"><span>⏱ <b id="tm">0:00</b></span><span>📏 <b id="ds">0</b> m</span></div>
+    <div id="mission"></div>
+  </div>
+  <div id="combo"></div>
+  <div id="bossbar" class="hide"><i id="bossF"></i><b>👑 GIANT SHARK</b></div>
+  <div id="bot"><div class="bar gr"><i id="grF"></i><b id="grT">GOLD RUSH</b></div><div class="bar en"><i id="enF"></i></div></div>
+</div>
+<button id="boost" class="hide">🚀</button>
+<div id="banner"></div><div id="toast"></div>
+
+<section id="menu" class="scr"><h1>DEEP<br>FIN</h1><p>Eat • Grow • Dive</p>
+  <button class="big" data-go="play">▶ PLAY</button>
+  <div class="grid2"><button data-go="shark">🦈 SHARK</button><button data-go="upg">⬆ UPGRADE</button><button data-go="mis">🎯 MISSIONS</button><button data-go="shop">🛒 SHOP</button><button data-go="ach">🏆 ACHIEVE</button><button data-go="prof">👤 PROFILE</button></div>
+  <button class="sm" data-go="set">⚙ SETTINGS</button>
+  <div class="cn">🪙 <span class="coins"></span> &nbsp; ⭐ Best <span id="bestM"></span></div></section>
+
+<section id="shark" class="scr hide"><h2>🦈 SHARK</h2><canvas id="pv" width="360" height="190"></canvas>
+  <div class="row3"><button class="ic" data-sh="-1">◀</button><div id="shInfo"></div><button class="ic" data-sh="1">▶</button></div>
+  <div id="shBtn"></div><div id="chips"></div><button data-go="menu">⬅ BACK</button></section>
+<section id="upg" class="scr hide"><h2>⬆ UPGRADE</h2><div class="cn">🪙 <span class="coins"></span></div><div id="upList" class="list"></div><button data-go="menu">⬅ BACK</button></section>
+<section id="shop" class="scr hide"><h2>🛒 SHOP</h2><div class="cn">🪙 <span class="coins"></span></div><div id="shopList" class="list"></div><button data-go="menu">⬅ BACK</button></section>
+<section id="mis" class="scr hide"><h2>🎯 MISSIONS</h2><div id="misList" class="list"></div><button data-go="menu">⬅ BACK</button></section>
+<section id="ach" class="scr hide"><h2>🏆 ACHIEVEMENTS</h2><div id="achList" class="list"></div><button data-go="menu">⬅ BACK</button></section>
+<section id="prof" class="scr hide"><h2>👤 PROFILE</h2><div id="profList" class="list"></div><button data-go="menu">⬅ BACK</button></section>
+<section id="set" class="scr hide"><h2>⚙ SETTINGS</h2><div id="setList" class="list"></div><button data-go="back">⬅ BACK</button></section>
+<section id="pm" class="scr hide"><h2>PAUSED</h2><button class="big" data-go="resume">▶ RESUME</button><button data-go="play">↻ RESTART</button><button data-go="set">⚙ SETTINGS</button><button data-go="quit">✖ QUIT</button></section>
+<section id="over" class="scr hide"><h2>RESULT</h2>
+  <div class="panel"><div class="sc">SCORE<b id="oSc"></b></div><div>HIGH SCORE <b id="oBest"></b> <em id="oNew"></em></div>
+  <div>SURVIVAL BONUS <b id="oBon"></b></div><div>TOTAL EARNED <b id="oTot"></b></div><hr>
+  <div>⏱ Time <b id="oTime"></b></div><div>🐟 Fish Eaten <b id="oFish"></b></div><div>📏 Distance <b id="oDist"></b></div><div>🦷 Largest <b id="oBig"></b></div><div>🔥 Best Combo <b id="oCombo"></b></div><div>✨ XP <b id="oXp"></b></div><div id="oLv"></div>
+  <div class="bar xp big"><i id="oBar"></i></div></div>
+  <button class="big" data-go="play">▶ PLAY AGAIN</button><button data-go="menu">← HOME</button></section>
+
+<section id="unlock" class="scr modal hide"><h2>NEW SHARK UNLOCKED!</h2><canvas id="uc" width="360" height="190"></canvas><h3 id="uName"></h3><button class="big" data-go="useNow">USE NOW</button><button data-go="uclose">OK</button></section>
+<section id="daily" class="scr modal hide"><h2>🎁 DAILY REWARD</h2><div id="dayGrid"></div><button class="big" data-go="claim">CLAIM</button></section>
+<section id="confirm" class="scr modal hide"><h2>⚠ WARNING</h2><p>This will permanently delete all progress.</p><button data-go="cancel">CANCEL</button><button class="red" data-go="doReset">RESET</button></section>
+<script src="js/game.js"></script>
+<script>if("serviceWorker"in navigator)addEventListener("load",()=>navigator.serviceWorker.register("sw.js").catch(()=>{}))</script>
+</body>
+</html>
